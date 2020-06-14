@@ -1,8 +1,8 @@
 {
 
   "manifest_version": 2,
-  "name": "Sia Skynet portal extension",
-  "description": "Sia Skynet portal extension",
+  "name": "ScPrime Public Portals Extension",
+  "description": "ScPrime Public Portals Extension",
   "version": "0.2",
 
   "icons": {
@@ -33,9 +33,9 @@
 
   "protocol_handlers": [
     {
-      "protocol": "web+sia",
-      "name": "Sia Protocol Handler",
-      "uriTemplate": "https://siasky.net/%s"
+      "protocol": "web+scp",
+      "name": "ScPrime Protocol Handler",
+      "uriTemplate": "https://scp.techandsupply.ca/%s"
     }
   ]
 
