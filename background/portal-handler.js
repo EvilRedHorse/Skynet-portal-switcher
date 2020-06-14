@@ -1,23 +1,14 @@
 var browser = browser || chrome;
 
 // Use this portal
-let defaultPortal = 'siasky.net';
+let defaultPortal = 'scp.techandsupply.ca';
 
 // Initialize the list of portal hosts
 let portalList = [
-	"siasky.net",
-	"skydrain.net",
-	"sialoop.net",
-	"skynet.luxor.tech",
-	"skynet.tutemwesi.com",
-	"siacdn.com",
-	"vault.lightspeedhosting.com",
-	"skyportal.xyz",
-	"skynethub.io",
-	"skynet.utxo.no",
-	"skynet.coolhd.hu",
-	"sia://",
-	"web-sia://"
+	"scp.techandsupply.ca",
+	"scprime.hashpool.eu",
+	"scp://",
+	"web-scp://"
 ];
 
 // Set the default list on installation.
@@ -64,24 +55,24 @@ function handleRequest(requestInfo) {
 		return {
 			redirectUrl: "https://" + defaultPortal + url.pathname
 		};
-	} else if (defaultPortal.indexOf(url.hostname) != -1 && url.pathname.startsWith("/web%2Bsia%3A%2F%2F")) {
-		skylink = url.pathname.replace('web%2Bsia%3A%2F%2F', '');
-		console.log(`Removing web+sia:// from path ->` + skylink);
+	} else if (defaultPortal.indexOf(url.hostname) != -1 && url.pathname.startsWith("/web%2Bscp%3A%2F%2F")) {
+		skylink = url.pathname.replace('web%2Bscp%3A%2F%2F', '');
+		console.log(`Removing web+scp:// from path ->` + publink);
 		return {
-			redirectUrl: "https://" + defaultPortal + skylink
+			redirectUrl: "https://" + defaultPortal + publink
 		}; 
 	} else if (searchEngines.indexOf(url.hostname) != -1) {
 		console.log('Checking search (q=...) query string');
 
 		const searchString = url.searchParams.get("q");
 		console.log(searchString)
-		if (searchString.startsWith('web-sia://') || searchString.startsWith('sia://')) {
-			skylink = searchString.replace('web-sia://', '');
-			skylink = skylink.replace('sia://', '');
-			console.log(skylink)
+		if (searchString.startsWith('web-scp://') || searchString.startsWith('scp://')) {
+			publink = searchString.replace('web-scp://', '');
+			publink = publink.replace('scp://', '');
+			console.log(publink)
 
 			return {
-				redirectUrl: "https://" + defaultPortal + '/' + skylink
+				redirectUrl: "https://" + defaultPortal + '/' + publink
 			}; 
 		}
 	}
